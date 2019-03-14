@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html >
+<head>
+ <title> Register  as Rider</title>
+    <link href="index1css.css" rel="stylesheet" typ>
+</head>
+<script type="text/javascript">
+
+
+            function formValidate() {
+
+                var firstname=document.forms["myForm"]["fname"].value;
+                var lastname = document.forms["myForm"]["lname"].value;
+                var zip = document.forms["myForm"]["zip"].value;
+                var state= document.forms["myForm"]["state"].value;
+                var username =document.forms["myForm"]["username"].value;
+                var email = document.forms["myForm"]["email"].value;
+
+
+                if (isAlphebatic(firstname))
+                    if(isAlphaNumeric(lastname))
+                        if(isNumeris(zip))
+                            if(selectedState( state))
+                                if(userValidation(username,6,8))
+                                    if(emailValidation(email))
+                                        return true;
+                                    else
+                                        return false;
+                                else
+                                    return false;
+                            else
+                                return false;
+                        else
+                            return false;
+                    else
+                        return false;
+                else
+                    return false;
+
+            }
+
+            function isEmpty(elemValue, field) {
+
+                if (elemValue=="" || elemValue== null){
+
+                    alert("You can't have " + field + "field Empty");
+                    return true;
+                }
+                else {
+
+                    return false;
+                }
+
+            }
+            function isAlphebatic(elemValue) {
+
+                var exp = /^[a-zA-Z]+$/;
+                if (!isEmpty(elemValue,"First Name")) {
+
+                    if (elemValue.match(exp))
+                    {
+                        return true;
+                    }
+                    else {
+
+                        alert("Enter only text for your First Name");
+                    }
+                }
+                else
+                {
+
+                    return false;
+                }
+
+
+            }
+            function isAlphaNumeric(elemValue) {
+
+                var exp =/^[0-9a-zA-Z]+$/;
+                if (!isEmpty(elemValue,"Address")){
+
+
+                    if (elemValue.match(exp)){
+
+                        return true;
+
+                    }
+                    else{
+
+                        alert("Enter only for your Lastname letter and 0-9 numaric numbers");
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            function isNumeris(elemValue) {
+                var exp = /^[0-9]+$/;
+                if (!isEmpty(elemValue,"zip code")){
+
+                    if (elemValue.match(exp)){
+
+                        return true;
+                    }
+                    else{
+
+                        alert("Enter a valid Zip Coad");
+                        return false;
+                    }
+                }
+                else{
+                    return false;
+                }
+            }
+            function selectedState(elemValue) {
+                if (elemValue == "Please Choose"){
+
+                    alert("Choose a state");
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
+            function userValidation(elemValue,min,max) {
+                if (!isEmpty(elemValue,"Username")){
+
+                    if (elemValue.length >= min && elemValue.length <= max){
+
+                        return  true;
+                    }
+                    else{
+
+                        alert("Enter a username in btween" + min+ "and" +" charaters");
+                        return false;
+                    }
+                }
+                else{
+
+                    return false;
+                }
+
+            }
+
+            function emailValidation(elemValue) {
+                if (!isEmpty(elemValue,"Email")) {
+
+                    var atops = elemValue.indexOf("@");
+                    var dotops = elemValue.indexOf(".");
+                    if (atops < 1 || dotops + 2 >= elemValue.length || atops + 2 > dotops) {
+
+                        alert("Enter a vaild email Address");
+                        return false;
+                    }
+                    else {
+
+                        return true;
+                    }
+                }
+
+                else
+                {
+
+                    return false;
+                }
+
+
+            }
+
+
+
+        </script>
+    </head>
+    <body>
+
+
+</div>
+
+    </body>
+
+
+</body>
+</html>

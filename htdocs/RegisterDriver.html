@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>RegisterDriver</title>
+    <script type="text/javascript">
+
+
+        function formValidate() {
+
+            var firstname=document.forms["myForm"]["fname"].value;
+            var lastname = document.forms["myForm"]["lname"].value;
+            var number = document.forms["myForm"]["number"].value;
+            var state= document.forms["myForm"]["state"].value;
+            var username =document.forms["myForm"]["username"].value;
+            var password =document.forms["myForm"]["password"].value;
+            var email = document.forms["myForm"]["email"].value;
+
+
+            if (isAlphebatic(firstname))
+                if(isAlphaNumeric(lastname))
+                    if(isNumeris(number))
+                        if(selectedState( state))
+                            if(userValidation(username,6,8))
+                                if(isPasswordValidation(number))
+                                if(emailValidation(email))
+                                    return true;
+                                 else
+                                    return false;
+                              else
+                                return false;
+                          else
+                              return false;
+                        else
+                            return false;
+                    else
+                        return false;
+                else
+                    return false;
+            else
+                return false;
+
+        }
+
+        function isEmpty(elemValue, field) {
+
+            if (elemValue=="" || elemValue== null){
+
+                alert("You can't have " + field + "field Empty");
+                return true;
+            }
+            else {
+
+                return false;
+            }
+
+        }
+        function isAlphebatic(elemValue) {
+
+            var exp = /^[a-zA-Z]+$/;
+            if (!isEmpty(elemValue,"First Name")) {
+
+                if (elemValue.match(exp))
+                {
+                    return true;
+                }
+                else {
+
+                    alert("Enter only text for your First Name");
+                }
+            }
+            else
+            {
+
+                return false;
+            }
+
+
+        }
+        function isAlphebatic(elemValue) {
+
+            var exp =/^[a-zA-Z]+$/;
+            if (!isEmpty(elemValue,"Last Name")){
+
+
+                if (elemValue.match(exp)){
+
+                    return true;
+
+                }
+                else{
+
+                    alert("Enter only text for your Last Name");
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        function isNumeris(elemValue) {
+            var exp = /^[0-9]+$/;
+            if (!isEmpty(elemValue,"Number")){
+
+                if (elemValue.match(exp)){
+
+                    return true;
+                }
+                else{
+
+                    alert("Enter a valid Telephone Number");
+                    return false;
+                }
+            }
+            else{
+                return false;
+            }
+        }
+        function selectedState(elemValue) {
+            if (elemValue == "Please Choose"){
+
+                alert("Choose a state");
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+        function userValidation(elemValue,min,max) {
+            if (!isEmpty(elemValue,"Username")){
+
+                if (elemValue.length >= min && elemValue.length <= max){
+
+                    return  true;
+                }
+                else{
+
+                    alert("Enter a username in btween" + min+ "and" +" charaters");
+                    return false;
+                }
+            }
+            else{
+
+                return false;
+            }
+
+        }
+
+        function isPasswordValidation(elemValue) {
+            var exp = /^[0-9a-zA-Z]+$/;
+            if (!isEmpty(elemValue,"password")){
+
+                if (elemValue.match(exp)){
+
+                    return true;
+                }
+                else{
+
+                    alert("Enter a valid password ");
+                    return false;
+                }
+            }
+            else{
+                return false;
+            }
+        }
+
+        function emailValidation(elemValue) {
+            if (!isEmpty(elemValue,"Email")) {
+
+                var atops = elemValue.indexOf("@");
+                var dotops = elemValue.indexOf(".");
+                if (atops < 1 || dotops + 2 >= elemValue.length || atops + 2 > dotops) {
+
+                    alert("Enter a vaild email Address");
+                    return false;
+                }
+                else {
+
+                    return true;
+                }
+            }
+
+            else
+            {
+
+                return false;
+            }
+
+
+        }
+
+
+
+    </script>
+</head>
+<link href="home2%20css.css" type="text/css" rel="stylesheet">
+
+<body>
+<section >
+    <div style="background-color: #333333;opacity: 40;width: 100%;height: 100px"> <img src="LOgo.png">
+
+        <a href="LOGIN%20driver.html" style="float: right;margin-top: 30px;font-family: Sans;font-size: large;margin-right: 10px">   Login</a>
+
+    </div>
+    <br/>
+    <div style="width: 100%;height:50px">
+
+
+        <ul>
+            <li><a class="active" href="home2.html">Home</a></li>
+            <li><a href="#news">GoRide</a></li>
+            <li><a href="RegisterDriver.html">GoDrive</a></li>
+            <li><a href="RegisterDelivery.html">GoDelivery</a></li>
+            <li><a href="ContactUs.html">Contact Us</a></li>
+            <li><a href="AboutUs.html">About Us</a></li>
+
+        </ul>
+
+
+    </div>
+    <br/>
+
+<div style="width: 100%;height: 1000px;background-color: #bbbbbb">
+
+
+
+
+
+
+    <form name="myForm" onsubmit="return formValidate()" method="post" action="confirmRegister.php">
+        <table class="tnD" align="center">
+
+            <tr>
+                <td>First Name</td>
+                <td width="600px" height="20px"><input type="text" id="fname" name = "fname"></td>
+
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td class="tD"> <input type="text" id="lname" name = "lname"></td>
+            </tr>
+            <tr>
+                <td>NIC</td>
+                <td class="tD"> <input type="text" id="nic" name = "nic"></td>
+            </tr>
+            <tr>
+                <td>Telephone</td>
+                <td class="tD"> <input type="number" id="telephone" name = "telephone" > </td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td class="tD">
+                    <select class = "text" name = "state" name = "state">
+                        <option value="Please Choose"> Please Choose </option>
+                        <option value="Mr."> Mr. </option>
+                        <option value="Mrs."> Mrs. </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Username(6-8characters): &nbsp;</td>
+                <td class="tD"> <input type="text" id="username"  name = "username"/>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>PassWord[0-9 a-z A-Z]: &nbsp;</td>
+                <td class="tD"> <input type="password" id="password"  name = "password"/>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>E-mail</td>
+                <td><input type="email" id="email" name = "email"/>&nbsp;</td>
+            </tr>
+            <tr>
+                <td> <input type="submit" value="submit">
+                    <input type="reset" value="reset">
+                </td>
+            </tr>
+
+
+        </table>
+    </form>
+
+
+
+
+
+
+
+</div>
+
+</section>
+
+
+<footer class="f">All Right Reserved :::    Sri lanka institiute of Information Techonology     :::First Year Final Project   :: Group 2.2</footer>
+
+</body>
+</html>
